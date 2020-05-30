@@ -43,7 +43,7 @@ def encode_texts(df: pd.DataFrame, texts_col: str, tokenizer: str = "bert-base-u
     return np.array of encoded sequence 
     """
     pretrained_tokenizer = AutoTokenizer.from_pretrained(tokenizer, use_fast=True)
-    print(pretrained_tokenizer)
+
     texts = list(df[texts_col].astype(str))
 
     encoded_sequence = pretrained_tokenizer.batch_encode_plus(texts, 
