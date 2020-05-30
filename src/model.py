@@ -1,7 +1,6 @@
 import torch
 
 class LSTMModel(torch.nn.Module):
-
     '''
     LSTM model Baseline
 
@@ -16,7 +15,6 @@ class LSTMModel(torch.nn.Module):
             - n_classes = int, number of classes 
             - do_normalizarion = bool, if true apply layer normalization
             - pooling_strategy = str, pooling over the hidden dimension 
-            
     '''
     def __init__(self,
                 vocab_size: int,
