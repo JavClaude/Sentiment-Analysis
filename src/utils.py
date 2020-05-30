@@ -36,7 +36,7 @@ def get_labels(df: pd.DataFrame, labels_col):
 
     return LB.transform(df[labels_col])
 
-def encode_texts(df: pd.DataFrame, texts_col: str, tokenizer: str = "bert-base-uncased", max_seq_length: int = 512):
+def encode_texts(df: pd.DataFrame, texts_col: str, tokenizer: str = "bert-base-uncased", max_seq_length: int = 512, return_vocab_size: bool = True):
     """"
     Encode list of texts using pretrained tokenizer from huggingface
 
@@ -52,4 +52,4 @@ def encode_texts(df: pd.DataFrame, texts_col: str, tokenizer: str = "bert-base-u
                                                               max_length=max_seq_length,
                                                               return_attention_masks=False,
                                                               return_token_type_ids=False)['input_ids']
-    return encoded_sequence
+    return encoded_sequence, pretrained_tokenizer.vocab_size
