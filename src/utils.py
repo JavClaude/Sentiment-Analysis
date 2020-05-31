@@ -21,6 +21,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from keras.utils import to_categorical
 
+def flat_pred(preds, threshold):
+    return np.where(preds>threshold, 1, 0)
 
 def set_seed(seed):
     random.seed(seed)
