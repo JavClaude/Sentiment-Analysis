@@ -21,8 +21,8 @@ def api_sentiment():
     prediction = predict(Model, encoded)
 
     request_responses = {
-        "Negative Score" : prediction[0][0],
-        "Positive Score" : prediction[0][1]
+        "Negative Score" : str(prediction[0][0]),
+        "Positive Score" : str(prediction[0][1])
     }
 
     return jsonify(request_responses)
