@@ -9,7 +9,7 @@ from transformers import AutoTokenizer
 
 app = Flask(__name__)
 
-Model, config_file = load_model("./src/Baseline_model/state_dict.py", "./src/Baseline_model/config_model.json") # argparse
+Model, config_file = load_model("../src/Baseline_model/state_dict.pt", "../src/Baseline_model/config_model.json") # argparse
 tokenizer = load_tokenizer()
 
 @app.route('/predict', methods = ['POST'])
