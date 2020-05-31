@@ -38,9 +38,7 @@ def get_length(df: pd.DataFrame, texts_col: int):
     Based on heuristic (mean and std over the length distribution of texts)
     '''
     df[texts_col] = df[texts_col].astype(str)
-
     sequences_length = df[texts_col].apply(lambda x: len(x.split()))
-
     max_seq_length = int(round(sequences_length.mean() + sequences_length.std()))
 
     return max_seq_length
@@ -52,31 +50,30 @@ def get_labels(df: pd.DataFrame, labels_col, n_classes):
     return np.array of labels
     '''
     LB = LabelEncoder()
-
     LB.fit(df[labels_col])
 
-    return to_categorical(LB.transform(df[labels_col]),n_classes)
+    return to_categorical(LB.transform(df[labels_col]), n_classes)
 
 def encode_texts(df: pd.DataFrame, texts_col: str, tokenizer: str = "bert-base-uncased", max_seq_length: int = 512, return_vocab_size: bool = True):
     """"
     Encode list of texts using pretrained tokenizer from huggingface
 
-    return np.array of encoded sequence 
+    return np.array of encoded sequence & vocab_size of tokenizer 
     """
     pretrained_tokenizer = AutoTokenizer.from_pretrained(tokenizer, use_fast=True)
-
     texts = list(df[texts_col].astype(str))
-
     encoded_sequence = pretrained_tokenizer.batch_encode_plus(texts, 
                                                               add_special_tokens=True, 
                                                               pad_to_max_length=True, 
                                                               max_length=max_seq_length,
                                                               return_attention_masks=False,
                                                               return_token_type_ids=False)['input_ids']
+
     return encoded_sequence, pretrained_tokenizer.vocab_size
 
 def create_TorchLoaders(X: List = None, y: np.array = None, test_size: int = 0.10, batch_size: int = 32, batch_size_eval: int = 64):
     '''
+    Creates torch dataloader for train and test data
 
     '''
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size)
