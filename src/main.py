@@ -76,7 +76,8 @@ def main(path_to_data: str,
                                                 step_size_up=opt_cycle, 
                                                 step_size_down=opt_cycle,
                                                 mode="exp_range",
-                                                cycle_momentum=False)
+                                                cycle_momentum=False,
+                                                gamma=0.999)
 
     if cuda==1:
         Model.cuda()
