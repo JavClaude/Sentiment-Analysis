@@ -33,7 +33,7 @@ def main(path_to_data: str,
     '''
     df = pd.read_csv(path_to_data)
     
-    if os.path.isdir():
+    if os.path.isdir(cache_dir):
         logger.info('Cache dir found here {}'.format(cache_dir))
         pass
     else: 
