@@ -28,18 +28,5 @@ def api_sentiment():
     return jsonify(request_responses)
 
 if __name__ == "__main__":
-    
- """    parser = argparse.ArgumentParser()
-
-    parser.add_argument("--path_to_model", help="Path to the pre trained model", typr=str)
-    parser.add_argument("--path_to_config", help="Path to the config file", type=str)
-
-    args = parser.parse_args()
- """
     app.run(debug=True)
     
-
-
-
-
-
