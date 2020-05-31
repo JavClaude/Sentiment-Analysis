@@ -37,3 +37,11 @@ python app.py
 curl -d '{"text": "Very good movie but too long"}' -X POST http://127.0.0.1:5000/predict
 ```
 
+
+## TO DO 
+
+1. Review the code base and make it more generic 
+2. Provide a docker image of the project
+3. Add extra features : multilangual models, csv as input ... 
+4. Unit Tests 
+
