@@ -19,6 +19,8 @@ from torch.utils.data import (
 ## Metrics / Utils
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+from keras.utils import to_categorical
+
 
 def set_seed(seed):
     random.seed(seed)
@@ -41,7 +43,7 @@ def get_length(df: pd.DataFrame, texts_col: int):
 
     return max_seq_length
 
-def get_labels(df: pd.DataFrame, labels_col):
+def get_labels(df: pd.DataFrame, labels_col, n_classes):
     '''
     Encode labels from df
 
@@ -51,7 +53,7 @@ def get_labels(df: pd.DataFrame, labels_col):
 
     LB.fit(df[labels_col])
 
-    return LB.transform(df[labels_col])
+    return to_categorical(LB.transform(df[labels_col]),n_classes)
 
 def encode_texts(df: pd.DataFrame, texts_col: str, tokenizer: str = "bert-base-uncased", max_seq_length: int = 512, return_vocab_size: bool = True):
     """"
