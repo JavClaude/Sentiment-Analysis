@@ -69,7 +69,7 @@ def main(path_to_data: str,
 
     metrics = {
         "training_loss" : [],
-        "eval_loss " : [],
+        "eval_loss" : [],
         "training_f1" : [],
         "eval_f1" : []
     }
@@ -91,8 +91,10 @@ def main(path_to_data: str,
 
             ## Metrics computation
             metrics["training_loss"].append(loss.item())
-            
-            tmp_f1 = f1_score(labels.to("cpu").detach().numpy(), preds.to("cpu").detach().numpy())
+
+            preds = preds.to("cpu").detach().numpy()
+            preds = flat_pred(preds, 0.5)
+            tmp_f1 = f1_score(labels.to("cpu").detach().numpy(), preds, average='macro')
 
             metrics["training_f1"].append(tmp_f1)
 
@@ -122,7 +124,9 @@ def main(path_to_data: str,
                 ## Eval metrics
                 metrics["eval_loss"].append(eval_loss.item())
 
-                tmp_f1 = f1_score(labels.to("cpu").detach().numpy(), preds.to("cpu").detach().numpy()) ## detach 
+                preds = preds.to("cpu").detach().numpy()
+                preds = flat_pred(preds, 0.5)
+                tmp_f1 = f1_score(labels.to("cpu").detach().numpy(), preds, average='macro') ## detach 
 
                 metrics["eval_f1"].append(tmp_f1)
         
