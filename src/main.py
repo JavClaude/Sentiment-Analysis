@@ -56,7 +56,8 @@ def main(path_to_data: str,
     
     config_dict = {
         "vocab_size" : vocab_size,
-        "n_classes"  : n_classes
+        "n_classes"  : n_classes,
+        "max_length" : optimal_length
     }
 
     if n_classes > 2:
