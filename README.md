@@ -18,7 +18,7 @@ The model has been trained for 3 epochs with Adam optimizer and Cyclical LR Sche
 python main.py --data_path='../Data/IMDB Dataset.csv' 
                --texts_col='review' --labels_col='sentiment' 
                 --n_classes=2 --batch_size=16 --batch_size_eval=64
-                --n_epochs=2 --cuda=1
+                --n_epochs=3 --cuda=1
 ```
 
 ## APP 
