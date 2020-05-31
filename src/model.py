@@ -24,7 +24,8 @@ class LSTMModel(torch.nn.Module):
                 ffn: int = 128, 
                 n_classes: int = None,
                 do_normalization: bool = True,
-                pooling_strategy: str = 'avg'):
+                pooling_strategy: str = 'avg',
+                **kwargs):
         
         super(LSTMModel, self).__init__()
         self.embedding = torch.nn.Embedding(vocab_size, embed_dim)
