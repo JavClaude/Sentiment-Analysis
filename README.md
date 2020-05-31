@@ -1,4 +1,4 @@
-# Sentiment-Analysis
+# Sentiment-Analysis using Pytorch
 
 You will find here : 
 * A Pytorch BiLSTM Model trained on IMDB Dataset (50k movie reviews) for 3 Epochs
