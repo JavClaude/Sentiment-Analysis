@@ -39,7 +39,7 @@ def main(path_to_data: str,
 
     Model = LSTMModel(
         vocab_size=vocab_size,
-        n_classes=2
+        n_classes=n_classes
     )
 
     if n_classes > 2:
