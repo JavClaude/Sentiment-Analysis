@@ -9,12 +9,16 @@ You will find here :
 
 ## Model training 
 The architecture is basic, BiLSTM with LayerNormalization. 
+
 The model has been trained for 3 epochs with Adam optimizer and Cyclical LR Schedueler
 
 ### run training 
 
 ```shell
-python main.py --data_path='../Data/IMDB Dataset.csv' --texts_col='review' --labels_col='sentiment' --n_classes=2 --batch_size=16 --batch_size_eval=64 --n_epochs=2 --cuda=1
+python main.py --data_path='../Data/IMDB Dataset.csv' 
+               --texts_col='review' --labels_col='sentiment' 
+                --n_classes=2 --batch_size=16 --batch_size_eval=64
+                --n_epochs=2 --cuda=1
 ```
 
 ## APP 
